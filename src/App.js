@@ -1,5 +1,14 @@
 import React from "react";
-
+class Todo extends React.Component {
+  render() {
+    return (
+      <li>
+        {this.props.todo.task}
+        {this.props.todo.completed ? <span>--Completed</span> : <span></span>}
+      </li>
+    );
+  }
+}
 class App extends React.Component {
   constructor() {
     super();
@@ -20,11 +29,6 @@ class App extends React.Component {
           id: 1237676323,
           completed: false,
         },
-        {
-          task: "clean",
-          id: 312798643,
-          completed: false,
-        },
       ],
     };
   }
@@ -40,7 +44,7 @@ class App extends React.Component {
         <h1> Todos </h1>
         <ul>
           {todos.map((todo) => {
-            return <li>{todo.task}</li>;
+            return <Todo todo={todo} />;
           })}
         </ul>
         <form>
