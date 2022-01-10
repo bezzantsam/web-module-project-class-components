@@ -15,6 +15,16 @@ class App extends React.Component {
           id: 1528817084358,
           completed: false,
         },
+        {
+          task: "code Js",
+          id: 1237676323,
+          completed: false,
+        },
+        {
+          task: "clean",
+          id: 312798643,
+          completed: false,
+        },
       ],
     };
   }
@@ -23,20 +33,21 @@ class App extends React.Component {
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
+    const { todos } = this.state;
+    console.log(todos);
     return (
       <div>
         <h1> Todos </h1>
         <ul>
-          <li> Groom the dog</li>
-          <li> Feed the dog</li>
-          <li> Save for vet</li>
+          {todos.map((todo) => {
+            return <li>{todo.task}</li>;
+          })}
         </ul>
         <form>
-          <input>
-            <button>Add</button>
-          </input>
-          <button> Clear</button>
+          <input />
+          <button>Add</button>
         </form>
+        <button> Clear</button>
       </div>
     );
   }
