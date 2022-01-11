@@ -42,7 +42,7 @@ class App extends React.Component {
       }),
     });
   };
-  handleToggle = () => {
+  handleToggle = (clickedId) => {
     //1 setState
     //2 change todos
     //3 find todo we clicked
@@ -50,15 +50,17 @@ class App extends React.Component {
     //5 keep all other todos same
     this.setState({
       ...this.state,
-      todos: todos.map(todo => {
-        if (todo.id === clickedId){
-         return {
-           ...todo,
-           completed: !todo.completed
-         } 
-      }
-    })
-  })
+      todos: todos.map((todo) => {
+        if (todo.id === clickedId) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    });
+  };
 
   handleAdd = (task) => {
     //1. setState
@@ -83,8 +85,8 @@ class App extends React.Component {
     return (
       <div>
         <h1> Todos </h1>
-        <TodoList todos={todos} />
-        <TodoForm handleAdd={handleAdd} />
+        <TodoList handleToggle={this.handleToggle} todos={todos} />
+        <TodoForm handleAdd={this.handleAdd} />
         <button onClick={this.handleClear}> Clear</button>
       </div>
     );
