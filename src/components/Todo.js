@@ -5,7 +5,7 @@ class Todo extends React.Component {
     return (
       <li>
         {this.props.todo.task}
-        {this.props.todo.completed ? <span>--Completed</span> : <span></span>}
+        {this.props.todo.completed} ? <span>--Completed</span> : <span></span>}
       </li>
     );
   }
