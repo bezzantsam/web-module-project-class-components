@@ -1,14 +1,6 @@
 import React from "react";
-class Todo extends React.Component {
-  render() {
-    return (
-      <li>
-        {this.props.todo.task}
-        {this.props.todo.completed ? <span>--Completed</span> : <span></span>}
-      </li>
-    );
-  }
-}
+import TodoList from "./components/TodoList";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -38,15 +30,11 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     const { todos } = this.state;
-    console.log(todos);
+
     return (
       <div>
         <h1> Todos </h1>
-        <ul>
-          {todos.map((todo) => {
-            return <Todo todo={todo} />;
-          })}
-        </ul>
+        <TodoList />
         <form>
           <input />
           <button>Add</button>
