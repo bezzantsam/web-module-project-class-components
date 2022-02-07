@@ -1,4 +1,5 @@
 import React from "react";
+import Todo from "./components/Todo";
 
 class App extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ class App extends React.Component {
         {
           task: "water bonsai",
           id: 12543547,
-          completed: false,
+          completed: true,
         },
         {
           task: " time with Amber",
@@ -34,12 +35,7 @@ class App extends React.Component {
         <h1>TODO</h1>
         <ul>
           {todos.map((todo) => {
-            return (
-              <li>
-                {todo.task}
-                {todo.completed ? <span> completed</span> : <span></span>}
-              </li>
-            );
+            return <Todo todo={todo} />;
           })}
         </ul>
         <form>
