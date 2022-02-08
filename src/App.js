@@ -29,7 +29,7 @@ class App extends React.Component {
 
   handleAdd = () => {
     const newTodo = {
-      task: "cook",
+      task: task,
       id: Date.now(),
       completed: false,
     };
@@ -55,8 +55,8 @@ class App extends React.Component {
       <div>
         <h1>TODO</h1>
 
-        <TodoList handleAdd={this.handleAdd} todos={todos} />
-        <TodoForm />
+        <TodoList todos={todos} />
+        <TodoForm handleAdd={this.handleAdd} />
 
         <button onClick={this.handleClear}> CLEAR</button>
       </div>
