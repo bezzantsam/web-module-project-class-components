@@ -26,21 +26,39 @@ class App extends React.Component {
       ],
     };
   }
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+
+  handleAdd = () => {
+    const newTodo = {
+      task: "cook",
+      id: Date.now(),
+      completed: false,
+    };
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newTodo],
+    });
+  };
+
+  handleClear = () => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter((todo) => {
+        return todo.completed === false;
+      }),
+    });
+  };
+
   render() {
-    console.log(this.state);
     const { todos } = this.state;
 
     return (
       <div>
         <h1>TODO</h1>
 
-        <TodoList todos={todos} />
+        <TodoList handleAdd={this.handleAdd} todos={todos} />
         <TodoForm />
 
-        <button> CLEAR</button>
+        <button onClick={this.handleClear}> CLEAR</button>
       </div>
     );
   }

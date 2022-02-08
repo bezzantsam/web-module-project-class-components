@@ -1,11 +1,15 @@
 import React from "react";
 
 class TodoForm extends React.Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.handleAdd();
+  };
   render() {
     return (
       <form>
         <input />
-        <button> ADD TODO</button>
+        <button onClick={this.handleSubmit}> ADD TODO</button>
       </form>
     );
   }
