@@ -1,5 +1,7 @@
 import React from "react";
-import Todo from "./components/Todo";
+
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +14,7 @@ class App extends React.Component {
           completed: true,
         },
         {
-          task: " time with Amber",
+          task: "spend time with Amber",
           id: 98765489,
           completed: false,
         },
@@ -28,20 +30,16 @@ class App extends React.Component {
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
+    console.log(this.state);
     const { todos } = this.state;
-    console.log(todos);
+
     return (
       <div>
         <h1>TODO</h1>
-        <ul>
-          {todos.map((todo) => {
-            return <Todo todo={todo} />;
-          })}
-        </ul>
-        <form>
-          <input />
-          <button> ADD TODO</button>
-        </form>
+
+        <TodoList todos={todos} />
+        <TodoForm />
+
         <button> CLEAR</button>
       </div>
     );
