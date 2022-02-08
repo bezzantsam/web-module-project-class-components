@@ -47,6 +47,20 @@ class App extends React.Component {
       }),
     });
   };
+  handleToggle = () => {
+    this.setState({
+      ...this.state,
+      todos: todos.map((todo) => {
+        if (todo.id === clickedId) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    });
+  };
 
   render() {
     const { todos } = this.state;
